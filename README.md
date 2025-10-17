@@ -18,7 +18,11 @@ Generates a distractor sentence by sampling random words from the corresponding 
 - You can adjust N_SENT to increase or decrease the corpus size.
 
 - Relative pronouns are identified using the PronType=Rel feature.
-
+- The following part of the code handles this feature detection:
+  ```python
+  if w.feats and "PronType=Rel" in w.feats:
+      rel_pool.add(word)
+- Since Stanza is sensitive to morphological and syntactic features, this section can be easily adapted to target other features (e.g., tense, number, gender, mood) by modifying the condition within the same structure.
 - The first token is fixed as "xxx" to match the input format used in jsPsych Word Maze experiments.
 
 - Output sentences can be directly used in Word Maze task code for experimental stimuli.
